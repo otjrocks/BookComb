@@ -1,6 +1,6 @@
 # BookComb
 
-BookComb is the easiest way to find information about millions of books. Comb through book suggestions with our descriptions and ratings. Then share your best book finds with others with the virtual bookshelf.
+BookComb is the easiest way to find information about millions of books. Comb through book suggestions with our descriptions and ratings. Then share your best book finds with others with the virtual bookshelf. (https://bookcomb.com/)
 
 ## Description
 
