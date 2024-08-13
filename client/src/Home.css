@@ -1,0 +1,24 @@
+.book--image {
+    min-width: 200px;
+}
+.search--container {
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 800px) {
+    .search--form {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        text-align: center;
+    }
+}
+
+.search--type--toggle {
+    display: flex;
+    align-items: center;
+}
+.toggle { 
+    color: oklch(var(--p))
+}

@@ -1,0 +1,283 @@
+:root {
+    --background: #7db3fe;
+    --light-brown: #c9834e;
+    --lightest-brown: #fdc498;
+    --brown: #b97540;
+    --dark-brown: #9b6339;
+    --darker-brown: #5a2e0e;
+    --shadow: rgba(65, 64, 50, 0.2);
+
+    --shelf-depth: 3vmin;
+    
+    --spine-pyramid: linear-gradient(
+      315deg,
+      transparent 75%,
+      rgba(255, 255, 255, 0.1) 0
+      ),
+      linear-gradient(
+        45deg,
+         transparent 75%,
+          rgba(255, 255, 255, 0.1) 0
+      ),
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.2) 166px,
+        transparent 0
+      ),
+      linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.1) 75%,
+        transparent 0
+      );
+      background-size: 20px 20px;
+    --spine-stairs: repeating-linear-gradient(
+        63deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.1) 1px,
+        transparent 3px,
+        transparent 0
+      ),
+      linear-gradient(
+        127deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.1) 90px,
+        transparent 55%,
+        transparent 0
+      ),
+      linear-gradient(
+        transparent 51%,
+        rgba(0, 0, 0, 0.1) 170px
+      );
+      background-size: 70px 120px;
+    --spine-argyle: repeating-linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.1) 1px,
+        transparent 1px,
+        transparent 80px
+      ),
+      repeating-linear-gradient(
+        60deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.1) 1px,
+        transparent 1px,
+        transparent 80px
+      ),
+      linear-gradient(
+        60deg,
+        rgba(0, 0, 0, 0.1) 25%,
+        transparent 25%,
+        transparent 75%,
+        rgba(0, 0, 0, 0.1) 75%,
+        rgba(0, 0, 0, 0.1)
+      ),
+      linear-gradient(
+        120deg,
+        rgba(0, 0, 0, 0.1) 25%,
+        transparent 25%,
+        transparent 75%,
+        rgba(0, 0, 0, 0.1) 75%,
+        rgba(0, 0, 0, 0.1)
+      );
+    background-size: 70px 120px;
+    --spine-tartan: repeating-linear-gradient(
+        transparent,
+        transparent 50px,
+        rgba(0, 0, 0, 0.4) 50px,
+        rgba(0, 0, 0, 0.4) 53px,
+        transparent 53px,
+        transparent 63px,
+        rgba(0, 0, 0, 0.4) 63px,
+        rgba(0, 0, 0, 0.4) 66px,
+        transparent 66px,
+        transparent 116px,
+        rgba(0, 0, 0, 0.5) 116px,
+        rgba(0, 0, 0, 0.5) 166px,
+        rgba(255, 255, 255, 0.2) 166px,
+        rgba(255, 255, 255, 0.2) 169px,
+        rgba(0, 0, 0, 0.5) 169px,
+        rgba(0, 0, 0, 0.5) 179px,
+        rgba(255, 255, 255, 0.2) 179px,
+        rgba(255, 255, 255, 0.2) 182px,
+        rgba(0, 0, 0, 0.5) 182px,
+        rgba(0, 0, 0, 0.5) 232px,
+        transparent 232px
+      ),
+      repeating-linear-gradient(
+        270deg,
+        transparent,
+        transparent 50px,
+        rgba(0, 0, 0, 0.4) 50px,
+        rgba(0, 0, 0, 0.4) 53px,
+        transparent 53px,
+        transparent 63px,
+        rgba(0, 0, 0, 0.4) 63px,
+        rgba(0, 0, 0, 0.4) 66px,
+        transparent 66px,
+        transparent 116px,
+        rgba(0, 0, 0, 0.5) 116px,
+        rgba(0, 0, 0, 0.5) 166px,
+        rgba(255, 255, 255, 0.2) 166px,
+        rgba(255, 255, 255, 0.2) 169px,
+        rgba(0, 0, 0, 0.5) 169px,
+        rgba(0, 0, 0, 0.5) 179px,
+        rgba(255, 255, 255, 0.2) 179px,
+        rgba(255, 255, 255, 0.2) 182px,
+        rgba(0, 0, 0, 0.5) 182px,
+        rgba(0, 0, 0, 0.5) 232px,
+        transparent 232px
+      ),
+      repeating-linear-gradient(
+        125deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.2) 2px,
+        rgba(0, 0, 0, 0.2) 3px,
+        transparent 3px,
+        transparent 5px,
+        rgba(0, 0, 0, 0.2) 5px
+      );
+  }
+
+  .bookshelf--body {
+    min-height: 100vh;
+    /* background-color: var(--background); */
+  }
+  
+  .bookshelf {
+    margin-top: 32px;
+    background-color: var(--brown);
+    border: var(--darker-brown) 2vmin solid;
+    border-radius: 3vmin 3vmin 1vmin 1vmin;
+    box-shadow: 4vmin 1vmin var(--shadow),
+      inset var(--shelf-depth) 0vmin var(--light-brown),
+      inset calc(var(--shelf-depth) * -1) 0vmin var(--light-brown);
+    position: relative;
+  }
+
+  .bookshelf--year {
+    color: var(--darker-brown);
+  }
+  
+  .book {
+    width: 80px;
+    height: 300px;
+    position: relative;
+    margin-left: 1px;
+    transform-style: preserve-3d;
+    transform: translateZ(0) rotateY(0);
+    transition: transform 1s;
+  }
+  
+  .side {
+    position: absolute;
+    border: 2px solid black;
+    border-radius: 3px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    transform-origin: center left;
+  }
+  
+  .spine {
+    position: relative;
+    width: 80px;
+    height: 280px;
+    /* Patterns from: https://projects.verou.me/css3patterns/ */
+    background-image: var(--tartan);
+    transform: rotateY(0deg) translateZ(0px);
+  }
+  
+  .spine-title {
+    margin: 2px;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.01rem;
+    line-height: 1;
+    color: gold;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    text-align: left;
+    padding-bottom: 3px;
+  }
+  .spine-subtitle {
+    color: rgb(255, 228, 139);
+    font-size: .7rem;
+  }
+  
+  .spine-author {
+    position: absolute;
+    color: rgb(255, 204, 39);
+    bottom: 0px;
+    font-size: 1.2rem;
+    left: 20%; /* no idea why 20% centers it */
+  }
+  
+  .top {
+    width: 80px;
+    height: 190px;
+    top: -2px;  /* hmm, why -2 and not 0? */
+    background-image: linear-gradient(90deg, white 90%, gray 10%);
+    background-size: 5px 5px;
+    transform: rotateX(90deg) translateZ(95px) translateY(-95px);
+  }
+  
+  .cover {
+    width: 190px;
+    height: 280px;
+    top: 0px;
+    background-size: contain;
+    background-repeat: round;
+    left: 80px;
+    transform: rotateY(90deg) translateZ(0);
+    transition: transform 1s;
+  }
+  
+  .book:hover {
+    z-index: 1;
+    transform: rotateX(-25deg) rotateY(-40deg) rotateZ(-15deg) translateY(50px)
+      translateX(-30px);
+  }
+  .table--toggle {
+    color: var(--darker-brown);
+    --tglbg: var(--lightest-brown);
+  }
+  .table--toggle:checked {
+    color: var(--darker-brown);
+  }
+
+  .bookshelf--table--text {
+    color: var(--darker-brown);
+  }
+  .bookshelf--table :where(thead tr, tbody tr:not(:last-child), tbody tr:first-child:last-child) {
+    border-bottom-color: var(--darker-brown);
+    border-bottom-width: .25rem;
+  }
+
+@media only screen and (max-width: 768px) {
+  .book {
+    width: 50px;
+  }
+  .spine {
+    width: 50px;
+  }
+  .top {
+    width: 50px;
+  }
+  .cover {
+    left: 50px;
+  }
+  .spine-title {
+    font-size: .8rem;
+  }
+  .spine-subtitle {
+    font-size: .6rem;
+  }
+  .spine-author {
+    font-size: .9rem;
+  }
+}
