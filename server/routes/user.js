@@ -64,7 +64,7 @@ router.post("/login", function (req, res) {
                     let options = {
                         maxAge: 1000 * 60 * 60 * 24, // expire after 24 hours
                         httpOnly: true, // Cookie will not be exposed to client side code
-                        sameSite: "None", // If client and server origins are different
+                        sameSite: "Strict", // If client and server origins are different
                         secure: true // use with HTTPS only
                     }
                     res.cookie( "token", token, options );
