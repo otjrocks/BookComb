@@ -76,6 +76,7 @@ app.get('/search/:value', (req, front_end_res) => {
         .then(res => res.json())
         .then(res => {
           if (res?.error) {
+            console.log(res?.error)
             front_end_res.json({success: false})
           } else {
             front_end_res.json({success: true, ...res})

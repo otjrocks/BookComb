@@ -3,7 +3,7 @@ import AddForm from './AddForm'
 import SearchForm from './SearchForm'
 
 export default function Intro(props) {
-    const {handleFormChange, handleFormSubmit} = props
+    const {handleFormChange, handleFormSubmit, searchFormData} = props
     return (
         <>
         <div className="columns-1 md:columns-2 flex flex-col-reverse lg:flex-row mx-4 sm:mx-16 md:mx-48 justify-center mt-28 mb-16">
@@ -19,7 +19,7 @@ export default function Intro(props) {
                         <button className='btn btn-primary btn-sm'>About</button>
                     </div> */}
                 </p>
-                <SearchForm handleFormChange={handleFormChange} handleFormSubmit={handleFormSubmit}/>
+                <SearchForm handleFormChange={handleFormChange} handleFormSubmit={handleFormSubmit} searchFormData={searchFormData} />
                 <div className="flex w-full flex-col p-10">
                     <div className="divider">OR</div>
                 </div>

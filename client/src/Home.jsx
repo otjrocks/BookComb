@@ -7,12 +7,12 @@ import Alert from './components/Alert'
 import SearchResults from './components/SearchResults'
 import Intro from './components/Intro'
 import { nanoid } from 'nanoid'
-import { useNavigate } from 'react-router-dom'
 
 
 export default function Home() {
 
   const [books, setBooks] = useState([])
+  const [numBooks, setNumBooks] = useState(0)
   const [searchFormData, setSearchFormData] = useState({search_text: "", search_type: "text"})
   const [searchError, setSearchError] = useState(false)
   const [hasSearched, setHasSearched] = useState(false)
@@ -21,20 +21,14 @@ export default function Home() {
   const [bookReviews, setBookReviews] = useState([])
   const [isLoading, setIsLoading] = useState(false)
 
-  const navigate = useNavigate();
-  const redirectLogin = () => {
-      navigate("/login");
-  }
-
-
     function fetch_api() {
       setIsLoading(true)
       setBooks([])
-      console.log("Fetch Google...")
       let url = import.meta.env.VITE_API_URL + "/search/"
       if (searchFormData.search_type === "isbn") {
         url = url + "isbn:"
       }
+      console.log(searchFormData.search_text)
       url = url + searchFormData.search_text
         fetch(url)
         .then(res => res.json())
@@ -42,19 +36,24 @@ export default function Home() {
           console.log(res)
           if (!res?.success) {
             setSearchError(true)
+            setBookReviews(() => [])
+            setBooks([])
+            setNumBooks(0)
           } else {
             if (searchError) {
               setSearchError(false)
             }
             setBookReviews(() => [])
             setBooks(res?.items)
+            setNumBooks(res?.items.length)
+            console.log(numBooks)
           }
         })
         .catch(error => {
             setSearchError(true)
+            setIsLoading(false)
         })
     }
-    let hasResult = books?.length > 0
 
 
     useEffect(() => {
@@ -105,8 +104,8 @@ export default function Home() {
           }
         })
         setBookReviews(() => newReviews)
+        setIsLoading(false)
       }
-    setIsLoading(false)
     }, [books])
 
   function handleFormChange(event) {
@@ -152,7 +151,7 @@ export default function Home() {
       { 
       !hasSearched 
       &&
-      <Intro handleFormChange={handleFormChange} handleFormSubmit={handleFormSubmit} />
+      <Intro handleFormChange={handleFormChange} handleFormSubmit={handleFormSubmit} searchFormData={searchFormData} />
       }
       {
         isLoading &&
@@ -160,10 +159,10 @@ export default function Home() {
             <span className="loading loading-spinner w-36 align-center m-10"></span>
         </div>
       }
-      { (!bookSummary && hasSearched && hasResult && !searchError) &&
+      { (!bookSummary && hasSearched && numBooks > 0 && !searchError) &&
         <SearchResults books={books} reviews={bookReviews} handleReadMore={handleReadMore} handleNewSearch={handleNewSearch} /> 
       }
-      { (bookSummary && hasSearched && hasResult && !searchError) &&
+      { (bookSummary && hasSearched && numBooks > 0 && !searchError) &&
         <BookSummary 
           key={nanoid()}
           title={bookResult.volumeInfo.title}
@@ -197,7 +196,7 @@ export default function Home() {
         </> 
       }
       { 
-      (!isLoading && hasSearched && !hasResult && !searchError) 
+      (!isLoading && hasSearched && numBooks <= 0 && !searchError) 
       && 
       <>
         <div className="back--button container mx-auto pl-5 pt-12 h-screen">

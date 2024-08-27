@@ -6,29 +6,31 @@ import Bookshelf from "./Bookshelf";
 
 export default function Account() {
     const [user, setUser] = useState({authenticated: false, email: "", username: ""});
-
+    const navigate = useNavigate();
+    
     useEffect(() => {
-    const request = new Request(`${import.meta.env.VITE_API_URL}/users/info`, {
-        method: "GET",
-        credentials: "include",
-    });
-    fetch(request)
-        .then(
-            res => res.json()
-        ).then(
-            res => setUser(res)
-        ).catch(
-            err => {
-                console.log(err)
-                redirectLogin()
-            }
-        )
+        const redirectLogin = () => {
+            navigate("/login");
+        }
+        const request = new Request(`${import.meta.env.VITE_API_URL}/users/info`, {
+            method: "GET",
+            credentials: "include",
+        });
+        fetch(request)
+            .then(
+                res => res.json()
+            ).then(
+                res => {
+                    setUser(res);
+                }
+            ).catch(
+                err => {
+                    console.log(err)
+                    redirectLogin()
+                }
+            )
     }, [])
 
-    const navigate = useNavigate();
-    const redirectLogin = () => {
-        navigate("/login");
-    }
 
     function handleLogout() {
         const request = new Request(`${import.meta.env.VITE_API_URL}/users/logout`, {
@@ -53,7 +55,7 @@ export default function Account() {
 
     return (
         <>
-        { user?.authenticated ?
+        { user?.authenticated &&
             <>
                 <Navbar />
                 <div className="container mx-auto mt-24 mb-24 justify-center">
@@ -69,8 +71,6 @@ export default function Account() {
                 <Bookshelf id={user.username} />
                 <Footer />
             </>
-        :
-        redirectLogin()
         }
         </>
     )
