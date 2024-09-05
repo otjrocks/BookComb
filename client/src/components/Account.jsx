@@ -21,13 +21,14 @@ export default function Account() {
                 res => res.json()
             ).then(
                 res => {
-                    setUser(res);
+                    setUser(res)
+                    console.log("test")
+                    if (!res?.authenticated) {
+                        redirectLogin()
+                    }
                 }
             ).catch(
-                err => {
-                    console.log(err)
-                    redirectLogin()
-                }
+                err => console.log(err)
             )
     }, [])
 
