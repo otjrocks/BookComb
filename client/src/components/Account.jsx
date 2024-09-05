@@ -22,7 +22,6 @@ export default function Account() {
             ).then(
                 res => {
                     setUser(res)
-                    console.log("test")
                     if (!res?.authenticated) {
                         redirectLogin()
                     }
