@@ -61,7 +61,7 @@ export default function Account() {
 
     return (
         <>
-        { user?.authenticated ?
+        { user?.authenticated &&
             <>
                 <Navbar />
                 <div className="container mx-auto mt-24 mb-24 justify-center">
@@ -77,8 +77,6 @@ export default function Account() {
                 <Bookshelf id={user.username} />
                 <Footer />
             </>
-            :
-            <Navigate to="/login"></Navigate>
         }
         
         </>
