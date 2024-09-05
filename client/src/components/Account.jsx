@@ -1,6 +1,6 @@
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Bookshelf from "./Bookshelf";
 
@@ -33,6 +33,12 @@ export default function Account() {
 
 
     function handleLogout() {
+        const redirectHome = () => {
+            navigate("/");
+        }
+        const redirectLogin = () => {
+            navigate("/login");
+        }
         const request = new Request(`${import.meta.env.VITE_API_URL}/users/logout`, {
             method: "POST",
             credentials: "include",
@@ -55,7 +61,7 @@ export default function Account() {
 
     return (
         <>
-        { user?.authenticated &&
+        { user?.authenticated ?
             <>
                 <Navbar />
                 <div className="container mx-auto mt-24 mb-24 justify-center">
@@ -71,7 +77,10 @@ export default function Account() {
                 <Bookshelf id={user.username} />
                 <Footer />
             </>
+            :
+            <Navigate to="/login"></Navigate>
         }
+        
         </>
     )
 }
